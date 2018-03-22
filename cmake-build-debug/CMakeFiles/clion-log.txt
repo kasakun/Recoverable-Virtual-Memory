@@ -1,0 +1,4 @@
+/home/chenzy/clion/bin/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug

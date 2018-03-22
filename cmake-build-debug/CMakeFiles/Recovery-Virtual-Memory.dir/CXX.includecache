@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.cpp
+cstdio
+-
+rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp
+sys/stat.h
+-
+string.h
+-
+malloc.h
+-
+iostream
+-
+fcntl.h
+-
+zconf.h
+-
+errno.h
+-
+rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+list
+-
+
