@@ -6,14 +6,16 @@
 
 #IncludeRegexTransform: 
 
-/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.cpp
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/abort.cpp
 cstdio
 -
 rvm.h
-/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
 
-/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp
 sys/stat.h
+-
+stdlib.h
 -
 string.h
 -
@@ -23,14 +25,16 @@ iostream
 -
 fcntl.h
 -
-zconf.h
--
 errno.h
 -
+unistd.h
+-
+limits.h
+-
 rvm.h
-/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
 
-/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
 list
 -
 

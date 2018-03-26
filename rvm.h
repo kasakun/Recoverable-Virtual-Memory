@@ -6,53 +6,58 @@
 #define RECOVERY_VIRTUAL_MEMORY_RVM_H
 
 #include <list>
-//////////////////////////////////////////////// Structure ///////////////////////////////////////////////////////////
+//////////////////////////////////////////////// Structures ///////////////////////////////////////////////////////////
 
 /*
  * segment structure
  */
 typedef struct __segment {
-    char* segname;
-    int fd;
-    int logfd;
+    char* segname;  // name of segment = name of the backup file for this segment 
+    int fd;  // file descriptor for external data segment, i.e. the backup file
+    int logfd;  // file descriptor for log segment
     int size;
     int locked;
-    int isMap;
+    //int isMap;
 
     void* data;
-
-} segment;
+} segment_t;
 
 /*
- * store history data form the log
+ * region structure
  */
 typedef struct __region {
-    int offset;
+    int offset;  // with regard to the memory base of a segment 
     int size;
 
-    void* origindata;
-} region;
+    void* old_data;  // store old data of a memory region into another memory region
+} region_t;
+
+
+/* 
+ * transaction structure
+ */
+typedef int trans_t;
+
+/* 
+ * segment node structure
+ */
+typedef struct __segment_node{
+	segment_t* segment;
+	trans_t tid;  // a segment can only be modified by a transaction at a time
+	std::list<region_t> regions;  // multiple regions of this segment may be modified by a transaction
+} segment_node_t;
+
 
 /*
- * structure for one log file
+ * structure for rvm
  */
-typedef struct __rvm_t {
+typedef struct __rvm {
     char* directory;   // backing directory
-    std::list<segment*>* rvm_seg;
+    std::list<segment_node_t>* segment_list;
 } rvm_t;
 
-/*
- * structure for one transaction
- */
-typedef struct __trans_t {
-    unsigned int transID;
-    unsigned int numseges;
-    rvm_t rvm;
-    segment** segs;
-} trans_t;
 
-
-//////////////////////////////////////////////// Declare /////////////////////////////////////////////////////////////
+//////////////////////////////////////////////// Library APIs /////////////////////////////////////////////////////////////
 /*
  * Initialize the library with the specified directory as backing store
  */
@@ -115,10 +120,39 @@ void rvm_truncate_log(rvm_t rvm);
  */
 void rvm_verbose(int enable_flag);
 
+
+
+//////////////////////////////////////////////// Utility Functions /////////////////////////////////////////////////////////////
+
 /*
  * LOG file writing
  */
-
 void rvm_log(int logfd, char* log);
+
+
+/*
+ * write new data (of specific regions of a segment) into the (redo) log file associated with this segment
+ */
+int write_segment_to_log(segment_node_t seg_node);
+
+/*
+ * read the (redo) log file associated with this segment
+ */
+int restore_segment_from_log(segment_t* seg, char* log_path);
+
+
+char* reconstruct_log_path(rvm_t rvm, segment_t* seg);
+
+
+/*
+ * reset a segment node's transaction ID to -1 if its original transaction ID is tid
+ */
+void reset_segment_tid(trans_t tid);
+
+
+/*
+ * print information of the global segment list
+ */
+void print_segment_list();
 
 #endif //RECOVERY_VIRTUAL_MEMORY_RVM_H
