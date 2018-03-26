@@ -146,7 +146,7 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
     seg->logfd = logfd;
     //seg->isMap = 1; // 1 for map state
 
-    seg->locked = 0;
+    //seg->locked = 0;
 
 	// restore from log -Yaohong
 	char* log_path = reconstruct_log_path(rvm, seg);
@@ -310,10 +310,11 @@ void rvm_about_to_modify(trans_t tid, void* segbase, int offset, int size){
 
 void rvm_commit_trans(trans_t tid){
     if(flag)
-		printf("RVM: commit transaction with ID %d\n", tid);
+		printf("RVM: commit transaction %d\n", tid);
 	
 	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
 		if((*it).tid == tid){
+			
 			// write segment data to log segment in disk
 			if(write_segment_to_log((*it)) == -1){
 			    printf("error in writing segment to log\n");
@@ -323,11 +324,34 @@ void rvm_commit_trans(trans_t tid){
 			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region){
 			    free((*it_region).old_data);
 			}
+			// clear the region list
+			(*it).regions.clear();
 		}
 	}
 		
 	// reset segment's tid to -1 if it is committed to disk
 	reset_segment_tid(tid);
+}
+
+
+void rvm_abort_trans(trans_t tid){
+    if(flag)
+		printf("RVM: abort transaction %d\n", tid);
+	
+	// restore from in memory copy?
+	// or from log segment in disk?
+	
+	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
+	    if((*it).tid == tid){
+			
+			//printf("region list size = %d\n", (*it).regions.size());
+			
+			// restore from in memory copy
+			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region){
+			    memcpy((*it).segment->data + (*it_region).offset, (*it_region).old_data, (*it_region).size);
+			}
+		}
+	}
 }
 
 
@@ -345,13 +369,15 @@ int write_segment_to_log(segment_node_t seg_node){
 		strcat(buf, tmp_buf);
 	}
 	
-	int bytes = write(logfd, buf, strlen(buf));  // append?
+	strcat(buf, "\n");
+	
+	int bytes = write(logfd, buf, strlen(buf));  // append to new line?
 	if(bytes == -1){
 	    printf("error in writing segment to log\n");
 		return -1;
 	}
-	
 	fsync(logfd);
+	
 	
 	if(flag){
 	    printf("Commit transaction %d: finish writing segment %s to log\n", seg_node.tid, seg->segname);
@@ -375,9 +401,9 @@ char* reconstruct_log_path(rvm_t rvm, segment_t* seg){
 
 
 int restore_segment_from_log(segment_t* seg, char* log_path){
-	FILE* logfile = fopen(log_path, "r");
+	FILE* log_file = fopen(log_path, "r");
 	
-	if(logfile == NULL){
+	if(log_file == NULL){
 	    printf("error in reading log file!\n");
 		return -1;
 	}
@@ -386,7 +412,7 @@ int restore_segment_from_log(segment_t* seg, char* log_path){
 	char *rest1, *token1;
 	char *rest2, *token2;
 	
-	while(fgets(line, LINE_MAX, logfile) != NULL){
+	while(fgets(line, LINE_MAX, log_file) != NULL){
 	    token1 = strtok_r(line, SEPERATOR, &rest1);
 		
 		if(strcmp(token1, COMMIT) != 0){
@@ -409,7 +435,7 @@ int restore_segment_from_log(segment_t* seg, char* log_path){
 		}
 	}
 	
-	fclose(logfile);
+	fclose(log_file);
 	printf("finish restoring from log\n");
 }
 

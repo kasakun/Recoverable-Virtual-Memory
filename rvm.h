@@ -16,7 +16,7 @@ typedef struct __segment {
     int fd;  // file descriptor for external data segment, i.e. the backup file
     int logfd;  // file descriptor for log segment
     int size;
-    int locked;
+    //int locked;
     //int isMap;
 
     void* data;
@@ -141,6 +141,9 @@ int write_segment_to_log(segment_node_t seg_node);
 int restore_segment_from_log(segment_t* seg, char* log_path);
 
 
+/*
+ * reconstruct log path from rvm (directory) and segment (segment name) 
+ */
 char* reconstruct_log_path(rvm_t rvm, segment_t* seg);
 
 
