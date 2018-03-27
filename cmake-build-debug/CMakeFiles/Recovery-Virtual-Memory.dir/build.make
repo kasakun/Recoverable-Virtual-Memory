@@ -34,19 +34,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/yaohong/Software/clion-2017.3.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/chenzy/clion/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/yaohong/Software/clion-2017.3.3/bin/cmake/bin/cmake -E remove -f
+RM = /home/chenzy/clion/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory
+CMAKE_SOURCE_DIR = /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Recovery-Virtual-Memory.dir/depend.make
@@ -57,90 +57,42 @@ include CMakeFiles/Recovery-Virtual-Memory.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
 
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o: ../abort.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o -c /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/abort.cpp
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o: ../abort.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o   -c /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.c
 
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/abort.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.c > CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.i
 
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/abort.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.c -o CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.s
 
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires:
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.requires:
 
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires
+.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.requires
 
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides.build
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.provides: CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.requires
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.provides.build
+.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.provides
 
-CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides.build: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o
-
-
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o: ../basic.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o -c /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/basic.cpp
-
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/basic.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.i
-
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/basic.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.s
-
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.requires:
-
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.requires
-
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.provides: CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.provides.build
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.provides
-
-CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.provides.build: CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o
-
-
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o: ../truncate.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o -c /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp
-
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.i
-
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.s
-
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.requires:
-
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.requires
-
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.provides: CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.provides.build
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.provides
-
-CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.provides.build: CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.provides.build: CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o
 
 
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o: ../rvm.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o -c /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o -c /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp
 
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.i
 
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s
 
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o.requires:
 
@@ -155,21 +107,17 @@ CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o.provides.build: CMakeFiles/Reco
 
 # Object files for target Recovery-Virtual-Memory
 Recovery__Virtual__Memory_OBJECTS = \
-"CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o" \
-"CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o" \
-"CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o" \
+"CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o" \
 "CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
 
 # External object files for target Recovery-Virtual-Memory
 Recovery__Virtual__Memory_EXTERNAL_OBJECTS =
 
-Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o
-Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o
-Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o
+Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o
 Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o
 Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/build.make
 Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable Recovery-Virtual-Memory"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Recovery-Virtual-Memory"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Recovery-Virtual-Memory.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -177,9 +125,7 @@ CMakeFiles/Recovery-Virtual-Memory.dir/build: Recovery-Virtual-Memory
 
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/build
 
-CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires
-CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o.requires
-CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o.requires
+CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o.requires
 CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o.requires
 
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/requires
@@ -189,6 +135,6 @@ CMakeFiles/Recovery-Virtual-Memory.dir/clean:
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/clean
 
 CMakeFiles/Recovery-Virtual-Memory.dir/depend:
-	cd /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/depend
 

@@ -1,79 +1,68 @@
-//
-// Created by chenzy on 3/20/18.
-//
-#include <stdio.h>
+/* abort.c - test that aborting a modification returns the segment to
+ * its initial state */
+
 #include "rvm.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-#define FLAG 1
+#define TEST_STRING1 "hello, world"
+#define TEST_STRING2 "bleg!"
+#define OFFSET2 1000
 
 
-//int main(int argc, char* argv[]) {
-//    rvm_t rvm;
-//    trans_t tid1, tid2;
-//
-//    char* segs[1];
-//    char* test_string1 = "hello";
-//	char* test_string2 = "world";
-//	char* test_string3 = "Yaohong Wu";
-//
-//	char* test_string4 = "HELLO";  // different from test_string1
-//	char* test_string5 = "WORLD";  // different from test_string2
-//
-//    int offset1 = 0, offset2 = 25, offset3 = 60;
-//	int size1 = 10, size2 = 10, size3 = 15;
-//
-//
-//    // verbose switch
-//    rvm_verbose(FLAG);
-//
-//    // create back repo
-//    rvm = rvm_init("RVM_abort");
-//
-//    rvm_destroy(rvm, "testseg");
-//
-//    // create and map seg
-//    segs[0] = (char*)rvm_map(rvm, "testseg", 100);
-//
-//	// first transaction, end using commit
-//	tid1 = rvm_begin_trans(rvm, 1, (void**)segs);
-//
-//	rvm_about_to_modify(tid1, segs[0], offset1, size1);
-//	sprintf(segs[0] + offset1, test_string1);
-//
-//	rvm_about_to_modify(tid1, segs[0], offset2, size2);
-//    sprintf(segs[0] + offset2, test_string2);
-//
-//	rvm_about_to_modify(tid1, segs[0], offset3, size3);
-//	sprintf(segs[0] + offset3, test_string3);
-//
-//	rvm_commit_trans(tid1);
-//
-//	// second transaction, end usng abort
-//	tid2 = rvm_begin_trans(rvm, 1, (void**)segs);
-//
-//	rvm_about_to_modify(tid2, segs[0], offset1, size1);
-//	sprintf(segs[0] + offset1, test_string4);
-//
-//	rvm_about_to_modify(tid2, segs[0], offset2, size2);
-//    sprintf(segs[0] + offset2, test_string5);
-//
-//	rvm_abort_trans(tid2);
-//
-//	// unmap, delete segment in memory
-//    // rvm_unmap(rvm, segs[0]);
-//
-//	// map again
-//	// segs[0] = (char*)rvm_map(rvm, "testseg", 100);
-//
-//    // check changes
-//	printf("first string is %s\n", segs[0] + offset1);
-//	printf("second string is %s\n", segs[0] + offset2);
-//	printf("third string is %s\n", segs[0] + offset3);
-//
-//	// unmap, delete segment in memory
-//    rvm_unmap(rvm, segs[0]);
-//
-//    // Destroy back file
-//    // rvm_destroy(rvm, "seg0");
-//    return 0;
-//}
+int main(int argc, char **argv)
+{
+     rvm_t rvm;
+     char *seg;
+     char *segs[1];
+     trans_t trans;
+     
+     rvm = rvm_init("rvm_segments");
+     
+     rvm_destroy(rvm, "testseg");
+     
+     segs[0] = (char *) rvm_map(rvm, "testseg", 10000);
+     seg = segs[0];
+
+     /* write some data and commit it */
+     trans = rvm_begin_trans(rvm, 1, (void**) segs);
+     rvm_about_to_modify(trans, seg, 0, 100);
+     sprintf(seg, TEST_STRING1);
+     
+     rvm_about_to_modify(trans, seg, OFFSET2, 100);
+     sprintf(seg+OFFSET2, TEST_STRING1);
+     
+     rvm_commit_trans(trans);
+
+     /* start writing some different data, but abort */
+     trans = rvm_begin_trans(rvm, 1, (void**) segs);
+     rvm_about_to_modify(trans, seg, 0, 100);
+     sprintf(seg, TEST_STRING2);
+     
+     rvm_about_to_modify(trans, seg, OFFSET2, 100);
+     sprintf(seg+OFFSET2, TEST_STRING2);
+
+     rvm_abort_trans(trans);
+
+
+     /* test that the data was restored */
+     if(strcmp(seg+OFFSET2, TEST_STRING1)) {
+	  printf("ERROR: second hello is incorrect (%s)\n",
+		 seg+OFFSET2);
+	  exit(2);
+     }
+
+     if(strcmp(seg, TEST_STRING1)) {
+	  printf("ERROR: first hello is incorrect (%s)\n",
+		 seg);
+	  exit(2);
+     }
+     
+
+     rvm_unmap(rvm, seg);
+     printf("OK\n");
+     exit(0);
+}
+

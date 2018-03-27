@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /home/yaohong/Software/clion-2017.3.3/bin/cmake/bin/cmake
+CMAKE_COMMAND = /home/chenzy/clion/bin/cmake/bin/cmake
 
 # The command to remove a file.
-RM = /home/yaohong/Software/clion-2017.3.3/bin/cmake/bin/cmake -E remove -f
+RM = /home/chenzy/clion/bin/cmake/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory
+CMAKE_SOURCE_DIR = /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug
+CMAKE_BINARY_DIR = /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cm
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/yaohong/Software/clion-2017.3.3/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/home/chenzy/clion/bin/cmake/bin/cmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/home/yaohong/Software/clion-2017.3.3/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/home/chenzy/clion/bin/cmake/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,59 +123,32 @@ Recovery-Virtual-Memory/fast:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/build
 .PHONY : Recovery-Virtual-Memory/fast
 
-abort.o: abort.cpp.o
+abort.o: abort.c.o
 
 .PHONY : abort.o
 
 # target to build an object file
-abort.cpp.o:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o
-.PHONY : abort.cpp.o
+abort.c.o:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o
+.PHONY : abort.c.o
 
-abort.i: abort.cpp.i
+abort.i: abort.c.i
 
 .PHONY : abort.i
 
 # target to preprocess a source file
-abort.cpp.i:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i
-.PHONY : abort.cpp.i
+abort.c.i:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.i
+.PHONY : abort.c.i
 
-abort.s: abort.cpp.s
+abort.s: abort.c.s
 
 .PHONY : abort.s
 
 # target to generate assembly for a file
-abort.cpp.s:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s
-.PHONY : abort.cpp.s
-
-basic.o: basic.cpp.o
-
-.PHONY : basic.o
-
-# target to build an object file
-basic.cpp.o:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o
-.PHONY : basic.cpp.o
-
-basic.i: basic.cpp.i
-
-.PHONY : basic.i
-
-# target to preprocess a source file
-basic.cpp.i:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.i
-.PHONY : basic.cpp.i
-
-basic.s: basic.cpp.s
-
-.PHONY : basic.s
-
-# target to generate assembly for a file
-basic.cpp.s:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.s
-.PHONY : basic.cpp.s
+abort.c.s:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.s
+.PHONY : abort.c.s
 
 rvm.o: rvm.cpp.o
 
@@ -204,33 +177,6 @@ rvm.cpp.s:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s
 .PHONY : rvm.cpp.s
 
-truncate.o: truncate.cpp.o
-
-.PHONY : truncate.o
-
-# target to build an object file
-truncate.cpp.o:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o
-.PHONY : truncate.cpp.o
-
-truncate.i: truncate.cpp.i
-
-.PHONY : truncate.i
-
-# target to preprocess a source file
-truncate.cpp.i:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.i
-.PHONY : truncate.cpp.i
-
-truncate.s: truncate.cpp.s
-
-.PHONY : truncate.s
-
-# target to generate assembly for a file
-truncate.cpp.s:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.s
-.PHONY : truncate.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -243,15 +189,9 @@ help:
 	@echo "... abort.o"
 	@echo "... abort.i"
 	@echo "... abort.s"
-	@echo "... basic.o"
-	@echo "... basic.i"
-	@echo "... basic.s"
 	@echo "... rvm.o"
 	@echo "... rvm.i"
 	@echo "... rvm.s"
-	@echo "... truncate.o"
-	@echo "... truncate.i"
-	@echo "... truncate.s"
 .PHONY : help
 
 

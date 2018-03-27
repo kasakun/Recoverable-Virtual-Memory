@@ -1,36 +1,55 @@
-#include <stdlib.h>
-#include <stdio.h>
+/* Test rvm_truncate_log() correctly removes log and applies
+changes to segments. */
 
 #include "rvm.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define TEST_STRING1 "hello, world"
+#define TEST_STRING2 "bleg!"
+#define OFFSET2 1000
 
 
-int main(int argc, char** argv){
-    rvm_t rvm;
-    trans_t tid;
+int main(int argc, char **argv)
+{
+  rvm_t rvm;
+  char *seg;
+  void *segs[1];
+  trans_t trans;
+     
+  // rvm = rvm_init(__FILE__ ".d");
+  rvm = rvm_init("rvm_segments");
+     
+  rvm_destroy(rvm, "testseg");
+     
+  segs[0] = (char *) rvm_map(rvm, "testseg", 10000);
+  seg = (char *) segs[0];
 
-	char* segs[1];
+  trans = rvm_begin_trans(rvm, 1, segs);
+  rvm_about_to_modify(trans, seg, 0, 100);
+  sprintf(seg, TEST_STRING1);
+     
+  rvm_about_to_modify(trans, seg, OFFSET2, 100);
+  sprintf(seg+OFFSET2, TEST_STRING2);
+     
+  rvm_commit_trans(trans);
 
-	char* test_string1 = "hello";
-	int offset1 = 0;
-	int size1 = 10;
 
-	rvm_verbose(1);
+  printf("Before Truncation:\n");
+  // system("ls -l " __FILE__ ".d");
+  system("ls -l rvm_segments");
 
-	rvm = rvm_init("RVM_trunc");  // directory name cannot be "RVM_truncate"!
-	rvm_destroy(rvm, "testseg");
+  printf("\n\n");
 
-	segs[0] = (char*)rvm_map(rvm, "testseg", 4096);
+  rvm_truncate_log(rvm);
+	 
+  printf("\nAfter Truncation:\n");
+  // system("ls -l " __FILE__ ".d");
+  system("ls -l rvm_segments");
 
-	tid = rvm_begin_trans(rvm, 1, (void**)segs);
-
-	rvm_about_to_modify(tid, segs[0], offset1, size1);
-	sprintf(segs[0] + offset1, test_string1);
-
-	rvm_commit_trans(tid);
-	
-	rvm_truncate_log(rvm);
-
-	rvm_unmap(rvm, segs[0]);
-
-	return 0;
+  rvm_unmap(rvm, seg);
+  exit(0);
 }
+

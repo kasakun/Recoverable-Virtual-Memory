@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.c
+rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+unistd.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+list
+-
+
