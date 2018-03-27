@@ -389,6 +389,7 @@ void rvm_truncate_log(rvm_t rvm){
 		}
 		
 		char* file_path = concat_dir_file(directory, strcat(seg_name, log_file_ext));
+
 		printf("path to log file is %s\n", file_path);
 		
 		restore_segment_from_log(data, file_path);
@@ -441,7 +442,9 @@ int write_segment_to_log(segment_node_t seg_node){
 
 
 char* reconstruct_log_path(rvm_t rvm, segment_t* seg){
-    char* log_path = (char*)malloc(strlen(rvm.directory) + 1 + strlen(seg->segname) + strlen(log_file_ext));
+    char* log_path = (char*)malloc(strlen(rvm.directory) + 3 + strlen(seg->segname) + strlen(log_file_ext));
+    log_path[0] = '.'; // Zeyu Chen
+    log_path[1] = '/'; // Zeyu Chen
 	strcpy(log_path, rvm.directory);
 	strcat(log_path, "/");
 	strcat(log_path, seg->segname);

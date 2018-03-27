@@ -123,32 +123,32 @@ Recovery-Virtual-Memory/fast:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/build
 .PHONY : Recovery-Virtual-Memory/fast
 
-abort.o: abort.c.o
+multi-abort.o: multi-abort.cpp.o
 
-.PHONY : abort.o
+.PHONY : multi-abort.o
 
 # target to build an object file
-abort.c.o:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.o
-.PHONY : abort.c.o
+multi-abort.cpp.o:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o
+.PHONY : multi-abort.cpp.o
 
-abort.i: abort.c.i
+multi-abort.i: multi-abort.cpp.i
 
-.PHONY : abort.i
+.PHONY : multi-abort.i
 
 # target to preprocess a source file
-abort.c.i:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.i
-.PHONY : abort.c.i
+multi-abort.cpp.i:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.i
+.PHONY : multi-abort.cpp.i
 
-abort.s: abort.c.s
+multi-abort.s: multi-abort.cpp.s
 
-.PHONY : abort.s
+.PHONY : multi-abort.s
 
 # target to generate assembly for a file
-abort.c.s:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.c.s
-.PHONY : abort.c.s
+multi-abort.cpp.s:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.s
+.PHONY : multi-abort.cpp.s
 
 rvm.o: rvm.cpp.o
 
@@ -186,9 +186,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Recovery-Virtual-Memory"
-	@echo "... abort.o"
-	@echo "... abort.i"
-	@echo "... abort.s"
+	@echo "... multi-abort.o"
+	@echo "... multi-abort.i"
+	@echo "... multi-abort.s"
 	@echo "... rvm.o"
 	@echo "... rvm.i"
 	@echo "... rvm.s"
