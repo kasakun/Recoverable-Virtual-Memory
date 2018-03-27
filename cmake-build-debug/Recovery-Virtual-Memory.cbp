@@ -87,10 +87,16 @@
 		<Unit filename="/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/abort.cpp">
 			<Option target="Recovery-Virtual-Memory"/>
 		</Unit>
+		<Unit filename="/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/basic.cpp">
+			<Option target="Recovery-Virtual-Memory"/>
+		</Unit>
 		<Unit filename="/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp">
 			<Option target="Recovery-Virtual-Memory"/>
 		</Unit>
 		<Unit filename="/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h">
+			<Option target="Recovery-Virtual-Memory"/>
+		</Unit>
+		<Unit filename="/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp">
 			<Option target="Recovery-Virtual-Memory"/>
 		</Unit>
 		<Unit filename="/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/CMakeLists.txt">

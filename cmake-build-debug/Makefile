@@ -150,6 +150,33 @@ abort.cpp.s:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s
 .PHONY : abort.cpp.s
 
+basic.o: basic.cpp.o
+
+.PHONY : basic.o
+
+# target to build an object file
+basic.cpp.o:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o
+.PHONY : basic.cpp.o
+
+basic.i: basic.cpp.i
+
+.PHONY : basic.i
+
+# target to preprocess a source file
+basic.cpp.i:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.i
+.PHONY : basic.cpp.i
+
+basic.s: basic.cpp.s
+
+.PHONY : basic.s
+
+# target to generate assembly for a file
+basic.cpp.s:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.s
+.PHONY : basic.cpp.s
+
 rvm.o: rvm.cpp.o
 
 .PHONY : rvm.o
@@ -177,6 +204,33 @@ rvm.cpp.s:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s
 .PHONY : rvm.cpp.s
 
+truncate.o: truncate.cpp.o
+
+.PHONY : truncate.o
+
+# target to build an object file
+truncate.cpp.o:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o
+.PHONY : truncate.cpp.o
+
+truncate.i: truncate.cpp.i
+
+.PHONY : truncate.i
+
+# target to preprocess a source file
+truncate.cpp.i:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.i
+.PHONY : truncate.cpp.i
+
+truncate.s: truncate.cpp.s
+
+.PHONY : truncate.s
+
+# target to generate assembly for a file
+truncate.cpp.s:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.s
+.PHONY : truncate.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -189,9 +243,15 @@ help:
 	@echo "... abort.o"
 	@echo "... abort.i"
 	@echo "... abort.s"
+	@echo "... basic.o"
+	@echo "... basic.i"
+	@echo "... basic.s"
 	@echo "... rvm.o"
 	@echo "... rvm.i"
 	@echo "... rvm.s"
+	@echo "... truncate.o"
+	@echo "... truncate.i"
+	@echo "... truncate.s"
 .PHONY : help
 
 

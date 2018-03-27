@@ -138,7 +138,7 @@ int write_segment_to_log(segment_node_t seg_node);
 /*
  * read the (redo) log file associated with this segment
  */
-int restore_segment_from_log(segment_t* seg, char* log_path);
+int restore_segment_from_log(void* data, char* log_path);
 
 
 /*
@@ -157,5 +157,20 @@ void reset_segment_tid(trans_t tid);
  * print information of the global segment list
  */
 void print_segment_list();
+
+
+/*
+ * check if a file is a log file 
+ */
+int is_log_file(char* file_path);
+
+
+/*
+ * generate a path to the specified file under a specified directory
+ */
+char* concat_dir_file(char* dir, char* file);
+
+
+int get_segment_size(rvm_t rvm, char* seg_name);
 
 #endif //RECOVERY_VIRTUAL_MEMORY_RVM_H

@@ -4,6 +4,11 @@
 CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o: ../abort.cpp
 CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o: ../rvm.h
 
+CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o: ../basic.cpp
+
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o: ../rvm.cpp
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o: ../rvm.h
+
+CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o: ../rvm.h
+CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o: ../truncate.cpp
 

@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o  -o Recovery-Virtual-Memory 
+/usr/bin/c++  -g   CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o  -o Recovery-Virtual-Memory 

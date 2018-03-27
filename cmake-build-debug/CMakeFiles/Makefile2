@@ -66,7 +66,7 @@ CMAKE_BINARY_DIR = /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cm
 CMakeFiles/Recovery-Virtual-Memory.dir/all:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/depend
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target Recovery-Virtual-Memory"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target Recovery-Virtual-Memory"
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/all
 
 # Include target in all.
@@ -76,7 +76,7 @@ all: CMakeFiles/Recovery-Virtual-Memory.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/Recovery-Virtual-Memory.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/Recovery-Virtual-Memory.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/rule

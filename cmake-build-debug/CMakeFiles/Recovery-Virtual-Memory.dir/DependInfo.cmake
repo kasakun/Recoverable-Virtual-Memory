@@ -5,7 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/abort.cpp" "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o"
+  "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/basic.cpp" "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/basic.cpp.o"
   "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp" "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
+  "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp" "/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
