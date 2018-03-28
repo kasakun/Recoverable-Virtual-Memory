@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/multi-abort.cpp" "/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o"
+  "/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.cpp" "/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o"
   "/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp" "/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

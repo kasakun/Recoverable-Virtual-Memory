@@ -57,28 +57,28 @@ include CMakeFiles/Recovery-Virtual-Memory.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
 
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o: ../multi-abort.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o -c /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/multi-abort.cpp
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o: ../abort.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o -c /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.cpp
 
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/multi-abort.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.i
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.cpp > CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.i
 
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/multi-abort.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.s
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abort.cpp -o CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.s
 
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.requires:
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires:
 
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.requires
+.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires
 
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.provides: CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.requires
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.provides.build
-.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.provides
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides.build
+.PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides
 
-CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.provides.build: CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o
+CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.provides.build: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o
 
 
 CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o: CMakeFiles/Recovery-Virtual-Memory.dir/flags.make
@@ -107,13 +107,13 @@ CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o.provides.build: CMakeFiles/Reco
 
 # Object files for target Recovery-Virtual-Memory
 Recovery__Virtual__Memory_OBJECTS = \
-"CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o" \
+"CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o" \
 "CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
 
 # External object files for target Recovery-Virtual-Memory
 Recovery__Virtual__Memory_EXTERNAL_OBJECTS =
 
-Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o
+Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o
 Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o
 Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/build.make
 Recovery-Virtual-Memory: CMakeFiles/Recovery-Virtual-Memory.dir/link.txt
@@ -125,7 +125,7 @@ CMakeFiles/Recovery-Virtual-Memory.dir/build: Recovery-Virtual-Memory
 
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/build
 
-CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/multi-abort.cpp.o.requires
+CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/abort.cpp.o.requires
 CMakeFiles/Recovery-Virtual-Memory.dir/requires: CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o.requires
 
 .PHONY : CMakeFiles/Recovery-Virtual-Memory.dir/requires

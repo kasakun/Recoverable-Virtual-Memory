@@ -1,5 +1,7 @@
 //
 // Created by chenzy on 3/20/18.
+
+// Yaohong Wu, Zeyu Chen
 //
 
 #include <stdlib.h>
@@ -58,7 +60,7 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
     if (flag)
         std::cout << "RVM: " << rvm.directory << " " << segname << " checking if multi-mapping." << std::endl;
     for (std::list<segment_node_t>::iterator iterator = rvm.segment_list->begin(); iterator != rvm.segment_list->end(); ++iterator) {
-        if ((*iterator).segment->segname == segname){
+        if ((*iterator).segment->segname == segname) {
             std::cout << "RVM: " << rvm.directory << " other segment is mapping. Abort." << std::endl;
             return NULL;
         }
@@ -110,7 +112,7 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
 
         if (check == -1) {
             close(fd);
-            std::cout << " Error: Fail to expand file, " << strerror(errno) << std::endl;
+            std::cout << " Error: Fail to expand file." << std::endl;
             return NULL;
         }
     }
@@ -150,8 +152,8 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
 
 	// restore from log -Yaohong
 	char* log_path = reconstruct_log_path(rvm, seg);
-	if(restore_segment_from_log(seg->data, log_path) == -1){
-	    printf("error in restoring segment from log!\n");
+	if(restore_segment_from_log(seg->data, log_path) == -1) {
+        std::cout << "Error: Fail to restore segment from log!" << std::endl;
 	}
 	
     // Add new segment to rvm
@@ -189,9 +191,9 @@ void rvm_log(int logfd, char* log) {
     fsync(logfd);
 }
 
-void rvm_unmap(rvm_t rvm, void *segbase){
+void rvm_unmap(rvm_t rvm, void *segbase) {
     for (std::list<segment_node_t>::iterator iterator = rvm.segment_list->begin(); iterator != rvm.segment_list->end(); ++iterator) {
-        if ((*iterator).segment->data == segbase){
+        if ((*iterator).segment->data == segbase) {
 
             //std::cout << "segment list size = " << rvm.segment_list->size() << std::endl;
             if (flag)
@@ -220,14 +222,14 @@ void rvm_unmap(rvm_t rvm, void *segbase){
     }
 }
 
-void rvm_destroy(rvm_t rvm, const char *segname){
+void rvm_destroy(rvm_t rvm, const char *segname) {
     char log[1024];
 
     // check if the seg is in mapping
     if (flag)
         std::cout << "RVM: " << rvm.directory << " " << segname << " checking if in mapping." << std::endl;
     for (std::list<segment_node_t>::iterator iterator = rvm.segment_list->begin(); iterator != rvm.segment_list->end(); ++iterator) {
-        if ((*iterator).segment->segname == segname){
+        if ((*iterator).segment->segname == segname) {
             std::cout << "RVM: " << rvm.directory << " " << segname << " is mapping. Fail to destroy." << std::endl;
             return;
         }
@@ -252,16 +254,15 @@ void rvm_verbose(int FLAG) {
     return;
 }
 
-trans_t rvm_begin_trans(rvm_t rvm, int numsegs, void **segbases){
+trans_t rvm_begin_trans(rvm_t rvm, int numsegs, void **segbases) {
 	if(flag)
-		printf("RVM: %s, begin transaction on %d segments\n", rvm.directory, numsegs);
+        std::cout << "RVM: " << rvm.directory << "begin transaction on " << numsegs << std::endl;
 	
-	for(int i = 0; i < numsegs; ++i){
-	    for(std::list<segment_node_t>::iterator it = rvm.segment_list->begin(); it != rvm.segment_list->end(); ++it){
-		    
-			if((*it).segment->data == segbases[i]){  
-			    if((*it).tid != -1){ // current segment is being modified by another transaction
-				    printf("current segment is being modified by another transaction\n");
+	for(int i = 0; i < numsegs; ++i) {
+	    for(std::list<segment_node_t>::iterator it = rvm.segment_list->begin(); it != rvm.segment_list->end(); ++it) {
+			if((*it).segment->data == segbases[i]) {  
+			    if((*it).tid != -1) { // current segment is being modified by another transaction
+                    std::cout << "Current segment is being modified by another transaction" << std::endl;
 					return (trans_t)-1;
 				}
 			}
@@ -270,9 +271,9 @@ trans_t rvm_begin_trans(rvm_t rvm, int numsegs, void **segbases){
 	
 	trans_t tid = global_tid++;
 	
-	for(int i = 0; i < numsegs; ++i){
-	    for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
-			if((*it).segment->data == segbases[i]){  
+	for(int i = 0; i < numsegs; ++i) {
+	    for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
+			if((*it).segment->data == segbases[i]) {  
 			    (*it).tid = tid;
 			}
 		}
@@ -285,13 +286,13 @@ trans_t rvm_begin_trans(rvm_t rvm, int numsegs, void **segbases){
 
 
 
-void rvm_about_to_modify(trans_t tid, void* segbase, int offset, int size){
+void rvm_about_to_modify(trans_t tid, void* segbase, int offset, int size) {
     if(flag)
-		printf("RVM: about to modify segment 0x%x with offset %d and size %d for transaction %d\n", segbase, offset, size, tid);
-	
-	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
+	    std::cout << "RVM: about to modify segment 0x" << std::hex << segbase << " with offset " << offset
+                  << " and size " << size << " for transaction" << tid << std::endl;
+	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
 	    
-		if((*it).tid == tid && (*it).segment->data == segbase){
+		if((*it).tid == tid && (*it).segment->data == segbase) {
 			// store old data in somewhere else in memory
 			void* old_data = malloc(sizeof(char) * size);
 			memcpy(old_data, segbase + offset, size);
@@ -307,20 +308,19 @@ void rvm_about_to_modify(trans_t tid, void* segbase, int offset, int size){
 	}
 }
 
-void rvm_commit_trans(trans_t tid){
+void rvm_commit_trans(trans_t tid) {
     if(flag)
-		printf("RVM: commit transaction %d\n", tid);
-	
-	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
-		if((*it).tid == tid){
+        std::cout << "RVM: commit transaction" << tid << std::endl;
+	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
+		if((*it).tid == tid) {
 			
 			// write segment data to log segment in disk
-			if(write_segment_to_log((*it)) == -1){
-			    printf("error in writing segment to log\n");
+			if(write_segment_to_log((*it)) == -1) {
+                std::cout << "Error : Fail to write segment to log" << std::endl;
 			}
 			
 			// throw away old data
-			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region){
+			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region) {
 			    free((*it_region).old_data);
 			}
 			// clear the region list
@@ -333,20 +333,14 @@ void rvm_commit_trans(trans_t tid){
 }
 
 
-void rvm_abort_trans(trans_t tid){
+void rvm_abort_trans(trans_t tid) {
     if(flag)
-		printf("RVM: abort transaction %d\n", tid);
+        std::cout << "RVM: Abort transaction" << tid << std::endl;
 	
-	// restore from in memory copy?
-	// or from log segment in disk?
-	
-	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
-	    if((*it).tid == tid){
-			
-			//printf("region list size = %d\n", (*it).regions.size());
-			
+	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
+	    if((*it).tid == tid) {
 			// restore from in memory copy
-			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region){
+			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region) {
 			    memcpy((*it).segment->data + (*it_region).offset, (*it_region).old_data, (*it_region).size);
 			}
 		}
@@ -355,66 +349,112 @@ void rvm_abort_trans(trans_t tid){
 
 
 
-void rvm_truncate_log(rvm_t rvm){
+void rvm_truncate_log(rvm_t rvm) {
     //check all logs under backing directory
-    char* directory = rvm.directory;
     DIR* d;
-    struct dirent *dir;    
-    
+    char* directory;
+    struct dirent *dir;
+
+    // Directory setting
+    directory = (char*) malloc (sizeof(rvm.directory) + 2);
+    directory[0] = '.';
+    directory[1] = '/';
+    strcat(directory, rvm.directory);
 	d = opendir(directory);
-	if(d == NULL){
-	    printf("error in opening directory!\n");
+	if(d == NULL) {
+        std::cout << "Error: Fail to open directory! No such directory." << std::endl;
 	}
-	
-	while((dir = readdir(d)) != NULL){
-	    char* file_name = dir->d_name;
-		
+
+    if (flag)
+        std::cout << "RVM: Truncate log to the segment files in " << directory << "." << std::endl;
+
+
+    while((dir = readdir(d)) != NULL) {
+        char line[LINE_MAX];
+        char *rest1, *rest2;
+        char *token1, *token2;
+        char *file_name, *file_path;
+        char *seg_name, *seg_path;
+
+        int bytes, offset, fd_seg;
+
+        FILE* log_file;
+
+        if (flag)
+            std::cout << "RVM: Start checking files in " << directory << "." << std::endl;
+
+        file_name = dir->d_name;
 		if(is_log_file(file_name) == 0) continue;  // not a log file, skip
 		
-		char* seg_name = strtok(file_name, ".");
-		printf("segment name is %s\n", seg_name);
-		
-		char* seg_path = concat_dir_file(directory, seg_name);
-		
-		int fd_seg = open(seg_path, O_RDWR);
-		if(fd_seg == -1){
-		    printf("error in opening segment file");
-		}
-		
-		size_t seg_size = (size_t)get_segment_size(rvm, seg_name);
-		
-		void* data = mmap(NULL, seg_size, PROT_READ | PROT_WRITE, MAP_SHARED, fd_seg, 0);
-        if(data == MAP_FAILED){
-			printf("error in mmap with errno = %d!\n", errno);
-		}
-		
-		char* file_path = concat_dir_file(directory, strcat(seg_name, log_file_ext));
+		seg_name = strtok(file_name, ".");
+        if (flag)
+            std::cout << "RVM: Segment name is " << seg_name << std::endl;
 
-		printf("path to log file is %s\n", file_path);
+        // Get seg path
+		seg_path = (char*) malloc(sizeof(seg_name) + sizeof(directory) + 1);
+        strcpy(seg_path, directory);
+        strcat(seg_path, "/");
+        strcat(seg_path, seg_name);
 		
-		restore_segment_from_log(data, file_path);
-		
-		if(munmap(data, seg_size) == -1){
-		    printf("error in munmap!\n");
+		fd_seg = open(seg_path, O_WRONLY|O_CREAT,S_IWUSR);
+		if(fd_seg == -1) {
+            std::cout << "Error: Fail to open segment file." << std::endl;
 		}
-		
-		if(close(fd_seg) == -1){
-			printf("error in closing segment file");
+
+        file_path = concat_dir_file(directory, strcat(seg_name, log_file_ext));
+
+        log_file = fopen(file_path, "r");
+        while(fgets(line, LINE_MAX, log_file) != NULL) {
+            if (flag)
+                std::cout << "RVM: Starts truncating " << seg_name << ".log to " << seg_name << "." << std::endl;
+
+            token1 = strtok_r(line, SEPERATOR, &rest1);
+            if(strcmp(token1, COMMIT) != 0) {
+                std::cout << "This is not a committed log entry!" << std::endl;
+                return;
+            }
+            token1 = strtok_r(rest1, SEPERATOR, &rest1);
+            while(token1 != NULL) {
+                token2 = strtok_r(token1, "-", &rest2);  // offset
+                offset = atoi(token2);
+
+                strtok_r(rest2, "-", &rest2);  // skip size
+                token2 = strtok_r(rest2, "-", &rest2);	// actual data
+
+                if(token2[strlen(token2)-1] == '\n')
+                    token2[strlen(token2)-1] = '\0';  // remove the '\n'
+                lseek(fd_seg, offset, SEEK_SET);
+
+                bytes = write(fd_seg, token2, strlen(token2));
+                if (bytes == -1)
+                    std::cout << "Error: Fail to write file!" << std::endl;
+                token1 = strtok_r(rest1, SEPERATOR, &rest1);
+            }
+        }
+
+		if(close(fd_seg) == -1) {
+            std::cout << "Error: Fail to close segment file" << std::endl;
 		}
-		
+
 		FILE* new_log_file = fopen(file_path, "w");  //erase all the contents of the log file by creating a new one
 		fclose(new_log_file);
+        if (flag)
+            std::cout << "RVM: Truncate success! " << std::endl;
 	}
 	closedir(d);
 }
 
 
-int write_segment_to_log(segment_node_t seg_node){
-    segment_t* seg = seg_node.segment;
-	int logfd = seg->logfd;
+int write_segment_to_log(segment_node_t seg_node) {
+    int logfd, bytes;
+    char buf[4096] = COMMIT;  // hard code
+    segment_t* seg;
+
+    seg = seg_node.segment;
+	logfd = seg->logfd;
 	
-	char buf[4096] = COMMIT;  // hard code
-	for(std::list<region_t>::iterator it = seg_node.regions.begin(); it != seg_node.regions.end(); ++it){
+
+	for(std::list<region_t>::iterator it = seg_node.regions.begin(); it != seg_node.regions.end(); ++it) {
 	    strcat(buf, SEPERATOR);
 		region_t r = (*it);
 		char tmp_buf[256];  // hard code
@@ -425,27 +465,26 @@ int write_segment_to_log(segment_node_t seg_node){
 	
 	strcat(buf, "\n");
 	
-	int bytes = write(logfd, buf, strlen(buf));  // append to new line?
-	if(bytes == -1){
-	    printf("error in writing segment to log\n");
+	bytes = write(logfd, buf, strlen(buf));  // append to new line?
+	if(bytes == -1) {
+        std::cout << "Error: Fail to write to the log" << std::endl;
 		return -1;
 	}
 	fsync(logfd);
-	
-	
-	if(flag){
-	    printf("Commit transaction %d: finish writing segment %s to log\n", seg_node.tid, seg->segname);
-	}
-	
+
+	if(flag)
+        std::cout << "Commit transaction " << seg_node.tid << ": finish writing segment" << seg->segname
+                  << " to log " << std::endl;
+
 	return 0;
 }
 
 
-char* reconstruct_log_path(rvm_t rvm, segment_t* seg){
+char* reconstruct_log_path(rvm_t rvm, segment_t* seg) {
     char* log_path = (char*)malloc(strlen(rvm.directory) + 3 + strlen(seg->segname) + strlen(log_file_ext));
     log_path[0] = '.'; // Zeyu Chen
     log_path[1] = '/'; // Zeyu Chen
-	strcpy(log_path, rvm.directory);
+	strcat(log_path, rvm.directory);
 	strcat(log_path, "/");
 	strcat(log_path, seg->segname);
 	strcat(log_path, log_file_ext);
@@ -454,72 +493,70 @@ char* reconstruct_log_path(rvm_t rvm, segment_t* seg){
 }
 
 
-int restore_segment_from_log(void* data, char* log_path){
+int restore_segment_from_log(void* data, char* log_path) {
 	FILE* log_file = fopen(log_path, "r");
-	
-	if(log_file == NULL){
-	    printf("error in reading log file!\n");
-		printf("log path is %s\n", log_path);
+    int offset = 0;
+    char line[LINE_MAX];
+    char *rest1, *token1;
+    char *rest2, *token2;
+
+	if(log_file == NULL) {
+	    std::cout << "Error: Fail to read log file!" << std::endl;
+		std::cout << "Log path is" << log_path << std::endl;
 		return -1;
 	}
 	
-	char line[LINE_MAX];
-	char *rest1, *token1;
-	char *rest2, *token2;
+
 	
-	while(fgets(line, LINE_MAX, log_file) != NULL){
+	while(fgets(line, LINE_MAX, log_file) != NULL) {
 	    token1 = strtok_r(line, SEPERATOR, &rest1);
 		
-		if(strcmp(token1, COMMIT) != 0){
-		    printf("this is not a committed log entry\n");
+		if(strcmp(token1, COMMIT) != 0) {
+            std::cout << "This is not a committed log entry" << std::endl;
 			return -1;
 		}
 		
 		token1 = strtok_r(rest1, SEPERATOR, &rest1);
-		while(token1 != NULL){
-		    //printf("token1 = %s\n", token1);
+		while(token1 != NULL) {
+
 			token2 = strtok_r(token1, "-", &rest2);  // offset
-            int offset = atoi(token2);  
-            //printf("offset is %d\n", offset);
-            token2 = strtok_r(rest2, "-", &rest2);  // skip size 
+            offset = atoi(token2);
+
+            strtok_r(rest2, "-", &rest2);  // skip size
             token2 = strtok_r(rest2, "-", &rest2);	// actual data
-			
-			//printf("bbb size of actual data is %d\n", strlen(token2));
+
 			if(token2[strlen(token2)-1] == '\n') token2[strlen(token2)-1] = '\0';  // remove the '\n'
-			//printf("aaa size of actual data is %d\n", strlen(token2));
-			
-			strcpy((char*)data + offset, token2);  // copy data into segment
+
+            strcpy((char*)data + offset, token2);  // copy data into segment
 			
 			token1 = strtok_r(rest1, SEPERATOR, &rest1);
 		}
 	}
-	
 	fclose(log_file);
-	//printf("finish restoring from log\n");
 }
 
 
-void reset_segment_tid(trans_t tid){
-	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
-		if((*it).tid == tid){
+void reset_segment_tid(trans_t tid) {
+	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
+		if((*it).tid == tid) {
 			(*it).tid = -1;
 		}
 	}
 }
 
-void print_segment_list(){
-    for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it){
-	    printf("segment name = %s, tid = %d\n", (*it).segment->segname, (*it).tid);
+void print_segment_list() {
+    for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
+        std::cout << "Segment name " << (*it).segment->segname << ", tid: " << (*it).tid << std::endl;
 	}
 }
 
-int is_log_file(char* file_path){
+int is_log_file(char* file_path) {
     int size_ext = strlen(log_file_ext);
 	if(strlen(file_path) < size_ext) return 0;
 	return strcmp(file_path + strlen(file_path) - size_ext, log_file_ext) == 0;	
 }
 
-char* concat_dir_file(char* dir, char* file){
+char* concat_dir_file(char* dir, char* file) {
     char* path = (char*)malloc(sizeof(char) * (strlen(dir) + strlen(file) + 1));
 	strcat(path, dir);
 	strcat(path, "/");
@@ -527,12 +564,11 @@ char* concat_dir_file(char* dir, char* file){
 	return path;
 }
 
-int get_segment_size(rvm_t rvm, char* seg_name){
-    for(std::list<segment_node_t>::iterator it = rvm.segment_list->begin(); it != rvm.segment_list->end(); ++it){
-	    if(strcmp((*it).segment->segname, seg_name) == 0){
+int get_segment_size(rvm_t rvm, char* seg_name) {
+    for(std::list<segment_node_t>::iterator it = rvm.segment_list->begin(); it != rvm.segment_list->end(); ++it) {
+	    if(strcmp((*it).segment->segname, seg_name) == 0) {
 		    return (*it).segment->size;  
 		}
 	}
-	
 	return 0;
 }
