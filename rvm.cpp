@@ -66,6 +66,10 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
         }
     }
 
+	// first call rvm_truncate_log() to move any data from logs to external data segments
+	rvm_truncate_log(rvm);
+	
+	
     if (flag)
         std::cout << "RVM: " << rvm.directory << " starts mapping." << std::endl;
     // log: dir info
@@ -151,10 +155,10 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
     seg->logfd = logfd;
 
 	// restore from log -Yaohong
-	char* log_path = reconstruct_log_path(rvm, seg);
-	if(restore_segment_from_log(seg->data, log_path) == -1) {
-        std::cout << "Error: Fail to restore segment from log!" << std::endl;
-	}
+	// char* log_path = reconstruct_log_path(rvm, seg);
+	// if(restore_segment_from_log(seg->data, log_path) == -1) {
+        // std::cout << "Error: Fail to restore segment from log!" << std::endl;
+	// }
 	
     // Add new segment to rvm
     if (flag)
@@ -358,10 +362,12 @@ void rvm_truncate_log(rvm_t rvm) {
     directory = (char*) malloc (sizeof(rvm.directory) + 2);
     directory[0] = '.';
     directory[1] = '/';
-    strcat(directory, rvm.directory);
+    memcpy(directory + 2, rvm.directory, strlen(rvm.directory));
 	d = opendir(directory);
+
 	if(d == NULL) {
-        std::cout << "Error: Fail to open directory! No such directory." << std::endl;
+        std::cout << "No directory to open." << std::endl;
+        return;
 	}
 
     if (flag)
@@ -403,6 +409,7 @@ void rvm_truncate_log(rvm_t rvm) {
         file_path = concat_dir_file(directory, strcat(seg_name, log_file_ext));
 
         log_file = fopen(file_path, "r");
+
         while(fgets(line, LINE_MAX, log_file) != NULL) {
             if (flag)
                 std::cout << "RVM: Starts truncating " << seg_name << ".log to " << seg_name << "." << std::endl;
@@ -557,8 +564,8 @@ int is_log_file(char* file_path) {
 
 char* concat_dir_file(char* dir, char* file) {
     char* path = (char*)malloc(sizeof(char) * (strlen(dir) + strlen(file) + 1));
-	strcat(path, dir);
-	strcat(path, "/");
+	memcpy(path, dir, strlen(dir));
+    strcat(path, "/");
 	strcat(path, file);
 	return path;
 }

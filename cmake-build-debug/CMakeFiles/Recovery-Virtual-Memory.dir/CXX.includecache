@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/multi-abort.cpp
-rvm.h
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
-unistd.h
--
-stdio.h
--
-stdlib.h
--
-string.h
--
-
 /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp
 stdlib.h
 -
@@ -48,5 +36,17 @@ rvm.h
 
 /media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
 list
+-
+
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp
+rvm.h
+/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
+unistd.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
 -
 
