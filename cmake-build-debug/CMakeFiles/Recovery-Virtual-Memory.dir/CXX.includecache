@@ -6,7 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abortincommit.cpp
+rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
+unistd.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp
 stdlib.h
 -
 string.h
@@ -32,21 +44,9 @@ sys/stat.h
 iostream
 -
 rvm.h
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
 
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h
 list
--
-
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/truncate.cpp
-rvm.h
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
-unistd.h
--
-stdio.h
--
-stdlib.h
--
-string.h
 -
 
