@@ -141,7 +141,7 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
     seg = (segment_t*) malloc(sizeof(segment_t));
     segnamelen = strlen(segname);
 
-    //seg->segname = NULL;
+
     seg->segname = (char*) malloc (segnamelen*sizeof(char));
     strcpy(seg->segname, segname);
 
@@ -171,7 +171,6 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
     if (flag)
         std::cout << "RVM: " << rvm.directory  << " " << segname << " logging." << std::endl;
 
-    //rvm_log(seg->logfd, log);
     if (flag)
         std::cout << "RVM: " << rvm.directory  << " " << segname << " map success, name: " << segname << " start address: 0x"
                   << std::hex << newdata << std::endl;
@@ -201,7 +200,7 @@ void rvm_unmap(rvm_t rvm, void *segbase) {
                           << segbase <<" starts unmapping." << std::endl;
             char log[1024];
             sprintf(log, "RVM: %s unmap %s from memory 0x%x", rvm.directory, (*iterator).segment->segname, segbase);
-            //rvm_log((*iterator).segment->logfd, log);
+
 
             if (flag)
                 std::cout << "RVM: " << rvm.directory << " closing " << (*iterator).segment->segname << "." << std::endl;
@@ -465,7 +464,7 @@ int write_segment_to_log(segment_node_t seg_node) {
 	
 	strcat(buf, "\n");
 	
-	bytes = write(logfd, buf, strlen(buf));  // append to new line?
+	bytes = write(logfd, buf, strlen(buf));
 	if(bytes == -1) {
         std::cout << "Error: Fail to write to the log" << std::endl;
 		return -1;
