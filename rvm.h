@@ -16,8 +16,6 @@ typedef struct __segment {
     int fd;  // file descriptor for external data segment, i.e. the backup file
     int logfd;  // file descriptor for log segment
     int size;
-    //int locked;
-    //int isMap;
 
     void* data;
 } segment_t;

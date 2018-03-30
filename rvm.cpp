@@ -155,12 +155,7 @@ void* rvm_map (rvm_t rvm, const char *segname, int size_to_create) {
     seg->fd = fd;
     seg->logfd = logfd;
 
-	// restore from log -Yaohong
-	// char* log_path = reconstruct_log_path(rvm, seg);
-	// if(restore_segment_from_log(seg->data, log_path) == -1) {
-        // std::cout << "Error: Fail to restore segment from log!" << std::endl;
-	// }
-	
+
     // Add new segment to rvm
     if (flag)
         std::cout << "RVM: " << rvm.directory << " " << segname << " saving info." << std::endl;
@@ -484,7 +479,6 @@ int write_segment_to_log(segment_node_t seg_node) {
         }
 		memcpy(tmp_buf + strlen(tmp_buf), seg->data + r.offset, r.size);
 		strcat(buf, tmp_buf);
-
 
 	}
 	
