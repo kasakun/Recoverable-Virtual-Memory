@@ -123,33 +123,6 @@ Recovery-Virtual-Memory/fast:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/build
 .PHONY : Recovery-Virtual-Memory/fast
 
-abortincommit.o: abortincommit.cpp.o
-
-.PHONY : abortincommit.o
-
-# target to build an object file
-abortincommit.cpp.o:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abortincommit.cpp.o
-.PHONY : abortincommit.cpp.o
-
-abortincommit.i: abortincommit.cpp.i
-
-.PHONY : abortincommit.i
-
-# target to preprocess a source file
-abortincommit.cpp.i:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abortincommit.cpp.i
-.PHONY : abortincommit.cpp.i
-
-abortincommit.s: abortincommit.cpp.s
-
-.PHONY : abortincommit.s
-
-# target to generate assembly for a file
-abortincommit.cpp.s:
-	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/abortincommit.cpp.s
-.PHONY : abortincommit.cpp.s
-
 rvm.o: rvm.cpp.o
 
 .PHONY : rvm.o
@@ -177,6 +150,33 @@ rvm.cpp.s:
 	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.s
 .PHONY : rvm.cpp.s
 
+truncate.o: truncate.cpp.o
+
+.PHONY : truncate.o
+
+# target to build an object file
+truncate.cpp.o:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o
+.PHONY : truncate.cpp.o
+
+truncate.i: truncate.cpp.i
+
+.PHONY : truncate.i
+
+# target to preprocess a source file
+truncate.cpp.i:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.i
+.PHONY : truncate.cpp.i
+
+truncate.s: truncate.cpp.s
+
+.PHONY : truncate.s
+
+# target to generate assembly for a file
+truncate.cpp.s:
+	$(MAKE) -f CMakeFiles/Recovery-Virtual-Memory.dir/build.make CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.s
+.PHONY : truncate.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -186,12 +186,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Recovery-Virtual-Memory"
-	@echo "... abortincommit.o"
-	@echo "... abortincommit.i"
-	@echo "... abortincommit.s"
 	@echo "... rvm.o"
 	@echo "... rvm.i"
 	@echo "... rvm.s"
+	@echo "... truncate.o"
+	@echo "... truncate.i"
+	@echo "... truncate.s"
 .PHONY : help
 
 

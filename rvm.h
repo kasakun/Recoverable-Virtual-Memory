@@ -173,4 +173,5 @@ char* concat_dir_file(char* dir, char* file);
 
 int get_segment_size(rvm_t rvm, char* seg_name);
 
+void remove_incomplete_log_entry(char* log_file);
 #endif //RECOVERY_VIRTUAL_MEMORY_RVM_H

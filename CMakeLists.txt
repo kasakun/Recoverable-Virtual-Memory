@@ -5,10 +5,10 @@ project(Recovery-Virtual-Memory)
 add_executable(Recovery-Virtual-Memory
 #                abort.cpp
 #                basic.cpp
-#                truncate.cpp
+                truncate.cpp
 #                multi.cpp
 #                multi-abort.cpp
-                abortincommit.cpp
+#                abortincommit.cpp
                 rvm.cpp
         )
 

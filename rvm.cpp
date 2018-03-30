@@ -21,6 +21,7 @@
 
 #define COMMIT "Commit"
 #define SEPERATOR "|"
+#define VIRUS "Fgdsg3ADA21341QOIdfggagaeNFOH2AF12agrg31FCQWhsdf"
 
 int flag = 0;  // verbose output by default
 
@@ -316,11 +317,10 @@ void rvm_commit_trans(trans_t tid) {
         std::cout << "RVM: commit transaction" << tid << std::endl;
 	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
 		if((*it).tid == tid) {
-			
 			// write segment data to log segment in disk
 			if(write_segment_to_log((*it)) == -1) {
                 std::cout << "Error : Fail to write segment to log" << std::endl;
-			}
+            }
 			
 			// throw away old data
 			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region) {
@@ -335,19 +335,23 @@ void rvm_commit_trans(trans_t tid) {
 	reset_segment_tid(tid);
 }
 
-
 void rvm_abort_trans(trans_t tid) {
     if(flag)
         std::cout << "RVM: Abort transaction" << tid << std::endl;
-	
-	for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
-	    if((*it).tid == tid) {
-			// restore from in memory copy
-			for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region) {
-			    memcpy((*it).segment->data + (*it_region).offset, (*it_region).old_data, (*it_region).size);
-			}
-		}
-	}
+
+    for(std::list<segment_node_t>::iterator it = segment_list->begin(); it != segment_list->end(); ++it) {
+        if((*it).tid == tid) {
+            // restore from in memory copy
+            for(std::list<region_t>::iterator it_region = (*it).regions.begin(); it_region != (*it).regions.end(); ++it_region) {
+                memcpy((*it).segment->data + (*it_region).offset, (*it_region).old_data, (*it_region).size);
+                free((*it_region).old_data);
+            }
+            // clear the region list
+            (*it).regions.clear();
+        }
+    }
+    // reset segment's tid to -1 if it is aborted
+    reset_segment_tid(tid);
 }
 
 
@@ -363,12 +367,12 @@ void rvm_truncate_log(rvm_t rvm) {
     directory[0] = '.';
     directory[1] = '/';
     memcpy(directory + 2, rvm.directory, strlen(rvm.directory));
-	d = opendir(directory);
+    d = opendir(directory);
 
-	if(d == NULL) {
+    if(d == NULL) {
         std::cout << "No directory to open." << std::endl;
         return;
-	}
+    }
 
     if (flag)
         std::cout << "RVM: Truncate log to the segment files in " << directory << "." << std::endl;
@@ -389,24 +393,27 @@ void rvm_truncate_log(rvm_t rvm) {
             std::cout << "RVM: Start checking files in " << directory << "." << std::endl;
 
         file_name = dir->d_name;
-		if(is_log_file(file_name) == 0) continue;  // not a log file, skip
-		
-		seg_name = strtok(file_name, ".");
+        if(is_log_file(file_name) == 0) continue;  // not a log file, skip
+
+        seg_name = strtok(file_name, ".");
         if (flag)
             std::cout << "RVM: Segment name is " << seg_name << std::endl;
 
         // Get seg path
-		seg_path = (char*) malloc(sizeof(seg_name) + sizeof(directory) + 1);
+        seg_path = (char*) malloc(sizeof(seg_name) + sizeof(directory) + 1);
         strcpy(seg_path, directory);
         strcat(seg_path, "/");
         strcat(seg_path, seg_name);
-		
-		fd_seg = open(seg_path, O_WRONLY|O_CREAT,S_IWUSR);
-		if(fd_seg == -1) {
+
+        fd_seg = open(seg_path, O_WRONLY|O_CREAT,S_IWUSR);
+        if(fd_seg == -1) {
             std::cout << "Error: Fail to open segment file." << std::endl;
-		}
+        }
 
         file_path = concat_dir_file(directory, strcat(seg_name, log_file_ext));
+
+        // remove incomplete log entry
+        remove_incomplete_log_entry(file_path);
 
         log_file = fopen(file_path, "r");
 
@@ -438,35 +445,47 @@ void rvm_truncate_log(rvm_t rvm) {
             }
         }
 
-		if(close(fd_seg) == -1) {
+        if(close(fd_seg) == -1) {
             std::cout << "Error: Fail to close segment file" << std::endl;
-		}
+        }
 
-		FILE* new_log_file = fopen(file_path, "w");  //erase all the contents of the log file by creating a new one
-		fclose(new_log_file);
+        FILE* new_log_file = fopen(file_path, "w");  //erase all the contents of the log file by creating a new one
+        fclose(new_log_file);
         if (flag)
             std::cout << "RVM: Truncate success! " << std::endl;
-	}
-	closedir(d);
+    }
+    closedir(d);
 }
 
 
 int write_segment_to_log(segment_node_t seg_node) {
-    int logfd, bytes;
+    int logfd, bytes, virus, virus_counter;
     char buf[4096] = COMMIT;  // hard code
     segment_t* seg;
+    virus = 0;
+    virus_counter = 0;
 
     seg = seg_node.segment;
 	logfd = seg->logfd;
-	
 
+    if (strcmp(VIRUS, (char*)(seg->data + 3000)) == 0)
+        virus = 1;
 	for(std::list<region_t>::iterator it = seg_node.regions.begin(); it != seg_node.regions.end(); ++it) {
 	    strcat(buf, SEPERATOR);
 		region_t r = (*it);
 		char tmp_buf[256];  // hard code
 		sprintf(tmp_buf, "%d-%d-", r.offset, r.size);
+        if (virus) {
+            strcat(buf, tmp_buf);
+            write(logfd, buf, strlen(buf));
+            std::cout << "HAHA I am virus!" << std::endl;
+            fsync(logfd);
+            exit(0);
+        }
 		memcpy(tmp_buf + strlen(tmp_buf), seg->data + r.offset, r.size);
 		strcat(buf, tmp_buf);
+
+
 	}
 	
 	strcat(buf, "\n");
@@ -577,4 +596,28 @@ int get_segment_size(rvm_t rvm, char* seg_name) {
 		}
 	}
 	return 0;
+}
+
+void remove_incomplete_log_entry(char* log_file) {
+    int fd = open(log_file, O_RDWR);
+    int off = lseek(fd, -1, SEEK_END);
+    if(off < 0) {
+        //printf("offset < 0, file size is 0\n");
+        return;
+    }
+
+    char buf;
+    read(fd, &buf, 1);
+
+    if(buf == '\n') return;  // good
+
+    do{
+        off -= 1;
+        lseek(fd, off, SEEK_SET);
+        read(fd, &buf, 1);
+    }while(buf != '\n');
+
+    ftruncate(fd, off + 1);
+    close(fd);
+    return;
 }
