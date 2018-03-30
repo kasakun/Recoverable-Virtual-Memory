@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/Recovery-Virtual-Memory.dir/truncate.cpp.o"
+  "CMakeFiles/Recovery-Virtual-Memory.dir/abortincommit.cpp.o"
   "CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o"
   "Recovery-Virtual-Memory.pdb"
   "Recovery-Virtual-Memory"

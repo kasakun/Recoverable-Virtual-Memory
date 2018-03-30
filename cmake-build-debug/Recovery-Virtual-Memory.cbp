@@ -84,13 +84,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/abortincommit.cpp">
+			<Option target="Recovery-Virtual-Memory"/>
+		</Unit>
 		<Unit filename="/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.cpp">
 			<Option target="Recovery-Virtual-Memory"/>
 		</Unit>
 		<Unit filename="/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/rvm.h">
-			<Option target="Recovery-Virtual-Memory"/>
-		</Unit>
-		<Unit filename="/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/truncate.cpp">
 			<Option target="Recovery-Virtual-Memory"/>
 		</Unit>
 		<Unit filename="/home/chenzy/Desktop/Code/OS/Project3/Recovery-Virtual-Memory/CMakeLists.txt">
