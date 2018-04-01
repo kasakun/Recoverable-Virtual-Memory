@@ -25,9 +25,9 @@ void proc1()
      trans1 = rvm_begin_trans(rvm, 1, (void **) segs);
      rvm_about_to_modify(trans1, segs[0], 0, 100);
      sprintf(segs[0], TEST_STRING);
-	 rvm_commit_trans(trans1);
-	 
-	 trans2 = rvm_begin_trans(rvm, 1, (void **) segs);
+     rvm_commit_trans(trans1);
+ 
+     trans2 = rvm_begin_trans(rvm, 1, (void **) segs);
      rvm_about_to_modify(trans2, segs[0], OFFSET2, 100);
      sprintf(segs[0]+OFFSET2, TEST_STRING);
      rvm_commit_trans(trans2);
