@@ -8,9 +8,9 @@ add_executable(Recovery-Virtual-Memory
 #                truncate.cpp
 #                multi.cpp
 #                multi-abort.cpp
-#                abortincommit.cpp
+        abort_in_commit.cpp
 #                multi_trans_basic.cpp
-                multi_trans_crash_basic.cpp
+#                multi_trans_crash_basic.cpp
                 rvm.cpp
         )
 

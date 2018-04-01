@@ -1,1 +1,1 @@
-/usr/bin/c++  -g   CMakeFiles/Recovery-Virtual-Memory.dir/multi_trans_crash_basic.cpp.o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o  -o Recovery-Virtual-Memory 
+/usr/bin/c++  -g   CMakeFiles/Recovery-Virtual-Memory.dir/abort_in_commit.cpp.o CMakeFiles/Recovery-Virtual-Memory.dir/rvm.cpp.o  -o Recovery-Virtual-Memory 

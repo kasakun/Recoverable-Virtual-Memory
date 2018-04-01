@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/multi_trans_crash_basic.cpp
+/home/chenzy/Desktop/Code/OS/Project3/Recoverable-Virtual-Memory/abort_in_commit.cpp
 rvm.h
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recoverable-Virtual-Memory/rvm.h
 unistd.h
 -
 stdio.h
@@ -17,10 +17,10 @@ stdlib.h
 -
 string.h
 -
-sys/wait.h
+wait.h
 -
 
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.cpp
+/home/chenzy/Desktop/Code/OS/Project3/Recoverable-Virtual-Memory/rvm.cpp
 stdlib.h
 -
 string.h
@@ -46,9 +46,9 @@ sys/stat.h
 iostream
 -
 rvm.h
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recoverable-Virtual-Memory/rvm.h
 
-/media/sf_CS6210/Projects/Project3/Recovery-Virtual-Memory/rvm.h
+/home/chenzy/Desktop/Code/OS/Project3/Recoverable-Virtual-Memory/rvm.h
 list
 -
 

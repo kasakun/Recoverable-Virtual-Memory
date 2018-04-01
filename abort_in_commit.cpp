@@ -61,6 +61,14 @@ void proc2() {
 
     //
     printf("Go back to last committed state.\n");
+
+    printf("Log file before mapping. \n");
+    printf("==================================\n");
+    while(fgets(line, LINE_MAX, log_file) != NULL) {
+        printf("%s", line);
+    }
+    printf("\n", line);
+
     newseg = (char *) rvm_map(rvm, "testseg", 10000);
 
 
@@ -77,11 +85,8 @@ void proc2() {
     }
     rvm_unmap(rvm, newseg);
 
-    while(fgets(line, LINE_MAX, log_file) != NULL) {
-        printf("%s", line);
-    }
-
-    printf("OK.\n");
+    printf("==================================\n");
+    printf("The complete lines are correct.\n");
 
 }
 
