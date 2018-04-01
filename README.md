@@ -5,7 +5,7 @@
 ### rvm_init()
 Create backing directory.
 
-### rvm_map
+### rvm_map()
 Map external data segment into memory. This mapping is a one-to-one mapping.
 
 ### rvm_unmap()
@@ -29,4 +29,10 @@ Undo all changes that have happened within the specified transaction.
 ### rvm_truncate_log()
 Apply changes recorded in logs onto external data segments and erase contents of logs.
 
+### rvm_verbose()
+Print information about what the library is doing when verbose output is enabled.
+
+## Contributions of Each Team Member
+Zeyu Chen: Design appropriate data structures. Implement initialization and mapping operations of RVM library. Also implement library output operation of RVM library. Design 1 additional test case.
+Yaohong Wu: Design appropriate data structures. Implement transactional operations of RVM library. Design 2 additional test cases.
 
