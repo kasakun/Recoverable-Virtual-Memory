@@ -25,13 +25,13 @@ void proc1()
     int offset = 0;
     int delta = strlen(TEST_STRING);
     for(int i = 0; i < 10; ++i){
-	    if (i == CRASH_INDEX) break;
-		trans = rvm_begin_trans(rvm, 1, (void **) segs);
+	if (i == CRASH_INDEX) break;
+	trans = rvm_begin_trans(rvm, 1, (void **) segs);
         rvm_about_to_modify(trans, segs[0], offset, delta);
         sprintf(segs[0] + offset, TEST_STRING);
-	    rvm_commit_trans(trans);
-		offset += delta;
-	}
+	rvm_commit_trans(trans);
+	offset += delta;
+    }
 	 
     abort();
 }
