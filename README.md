@@ -3,7 +3,7 @@
 ## Introduction
 The goal of this project is to realize lightweight recoverable virtual memory.
 
-The mechanism can be briefly concluded as follows. Each segment is associated with a log file. Before users write to external data segments, they first write to log files. The next time they map from external data segments to in-memory segments, log files will be truncated and any new updates will be reflected on external data segments. The data in external data segments will be brought into memory segments. In case a crash happens, memory can be recovered to the last committed state by reading committed log entries in log files.
+The mechanism can be briefly concluded as follows. Each segment is associated with a log file. Before users write to external data segments, they first write to log files. The next time they map from external data segments to in-memory segments, log files will be truncated and any new updates will be reflected on external data segments. The data in external data segments will be brought into memory segments. In case a crash happens, memory can be recovered to the last committed state using committed log entries in log files and data in external data segments.
 
 ## Functions
 
