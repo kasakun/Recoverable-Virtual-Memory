@@ -42,3 +42,6 @@ Zeyu Chen: Design appropriate data structures. Implement initialization and mapp
 
 Yaohong Wu: Design appropriate data structures. Implement transactional operations of RVM library. Design 2 additional test cases.
 
+## Release
+See release repo to see the released version.
+
