@@ -1,4 +1,4 @@
-# Recovery-Virtual-Memory
+# Recoverable-Virtual-Memory
 
 ## Introduction
 The goal of this project is to realize lightweight recoverable virtual memory.
